@@ -11,12 +11,51 @@
     - Sonra, `Kisi` örneklerine `.bosalt()` yeteneği de ekleyin:
         + Eğer bosalt tetiklenirse, 'mide' dizisi boşaltılır.
     - `Kisi` örneklerine `.toString()` metodu ekleyin:
-        + Bu metotla, `isim` ve `yas`i içeren bir string döndürmelisin. (Örn: "Mary, 50")
+        + Bu metotla, `isim` ve `yas`i içeren bir stringe döndürmelisin. (Örn: "Mary, 50")
 */
 
-function Kisi(/* kodlar buraya */) {
-  /* kodlar buraya */
+function Kisi(isim,yas) {
+  const kisi={
+    _isim:isim,
+    _yas:yas,
+    _mide:[],
+    ye:function(str){
+      if(this._mide.length < 10){
+        this._mide.push(str)
+        return `${this._isim} ${str} yemek yedi`;
+      }else{
+        return `${this._isim} daha fazla yiyemez`;
+      }
+    },
+    bosalt:function(){
+      this._mide=[]
+      return `Mide boşaltıldı!`;
+    },
+    toString:function(){
+      return `${this._isim}, ${this._yas}`
+    }
+  }
+  return kisi
 }
+
+// const muhammed = Kisi("Muhammed",23)
+// muhammed.ye("Elma")
+// muhammed.ye("Muz")
+// muhammed.ye("Armut")
+// muhammed.ye("Armut")
+// muhammed.ye("Armut")
+// muhammed.ye("Armut")
+// muhammed.ye("Armut")
+// muhammed.ye("Armut")
+// muhammed.ye("Armut")
+// muhammed.ye("Armut")
+// muhammed.ye("Armut")
+// muhammed.ye("Armut")
+// muhammed.ye("Armut")
+// console.log(muhammed._mide)
+// console.log(muhammed.toString())
+
+
 
 /*
   GÖREV 2
@@ -34,8 +73,8 @@ function Kisi(/* kodlar buraya */) {
         +  "x kilometrede benzinim bitti!" x değişkeni `kilometreSaati`ndeki sayı olmalıdır.
 */
 
-function Araba(/* kodlar buraya */) {
-  /* kodlar buraya */
+function Araba() {
+  
 }
 
 /*
