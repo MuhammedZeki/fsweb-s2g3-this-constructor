@@ -73,18 +73,49 @@ function Kisi(isim,yas) {
         +  "x kilometrede benzinim bitti!" x değişkeni `kilometreSaati`ndeki sayı olmalıdır.
 */
 
-function Araba() {
-  
+function Araba(model,yakitTuketimi) {
+const araba = {
+    _model: model,
+    _yakitTuketimi: yakitTuketimi,
+    _benzinDepo: 0,
+    _kmSaati: 0,
+
+    doldur: function(litre) {
+      this._benzinDepo += litre;
+      console.log(`${this._model} ${litre} litre benzin aldı. Depodaki benzin: ${this._benzinDepo} litre.`);
+    },
+
+    kullan: function(mesafe) {
+      const harcananBenzin = mesafe * this._yakitTuketimi;
+      
+      if (this._benzinDepo >= harcananBenzin) {
+        this._benzinDepo -= harcananBenzin;
+        this._kmSaati += mesafe;
+        console.log(`${this._model} ${mesafe} km yol kat etti. Kalan benzin: ${this._benzinDepo} litre.`);
+      } else {
+        const gidilenMesafe = this._benzinDepo / this._yakitTuketimi;
+        this._kmSaati += gidilenMesafe;
+        this._benzinDepo = 0;
+        console.log(`${this._model} ${this._kmSaati} kilometrede benzinim bitti!`);
+      }
+    },
+  };
+  return araba
 }
 
-/*
-  GÖREV 3
-  Kendi cümlelerinle "this" kelimesinin 4 prensibini açıklayın:
-  1.
-  2.
-  3.
-  4.
-*/
+const bmw = new Araba("BMW 3.20", 0.1); // 1 km'de 0.1 litre yakar
+
+console.log(bmw);
+
+bmw.doldur(30);
+bmw.doldur(30);
+console.log(bmw._benzinDepo); 
+bmw.kullan(300)
+bmw.kullan(300)
+bmw.kullan(300)
+bmw.kullan(300)
+console.log(bmw);
+
 
 
 /* !!!! Burdan aşağısını değiştirmeyin !!!! */
